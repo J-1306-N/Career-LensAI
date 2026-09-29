@@ -1,0 +1,7 @@
+{
+  "name": "CareerLens AI – AI-Powered Career Readiness & Skill Gap Analyzer",
+  "description": "Intelligent career readiness and skill gap analyzer for college students. Evaluates resumes, maps competencies, generates personalized roadmaps, interview simulations, and project recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
