@@ -159,8 +159,14 @@ export const RoadmapPage: React.FC = () => {
                         </button>
                       </div>
 
-                      {/* Tasks and Projects */}
+                      {/* Why Needed & Tasks and Projects */}
                       <div className="p-3 rounded-xl bg-white/80 border border-slate-200 space-y-2 text-xs">
+                        {item.why_needed && (
+                          <div className="text-[11px] text-slate-600 bg-indigo-50/50 p-2 rounded-lg border border-indigo-100/60 leading-relaxed">
+                            <strong className="text-indigo-950 font-semibold">Why this matters:</strong> {item.why_needed}
+                          </div>
+                        )}
+
                         <div className="flex items-start gap-2 text-slate-700">
                           <BookOpen className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
                           <div>

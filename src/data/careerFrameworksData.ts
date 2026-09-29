@@ -15,6 +15,11 @@ export interface CareerFramework {
   intermediateSkills: string[];
   advancedSkills: string[];
   interviewTopics: string[];
+  preferredSkills?: string[];
+  recommendedCertifications?: string[];
+  recommendedProjectTypes?: string[];
+  practicalExperienceNeeded?: string;
+  learningPrerequisites?: string[];
 }
 
 export const CAREER_DOMAINS = [
@@ -582,5 +587,125 @@ export const CAREER_FRAMEWORKS: CareerFramework[] = [
     intermediateSkills: ['ADDIE Instructional Design Process', 'Interactive Module Authoring', 'Learner Engagement Analytics', 'Blended Learning Workflows'],
     advancedSkills: ['Enterprise LMS Migration', 'AI-Assisted Adaptive Learning Pathways', 'Institutional Accreditation Alignment', 'Accessibility in Digital Learning'],
     interviewTopics: ['Applying the ADDIE Model to Design a New Technical Course', 'How You Measure Real Learning Retention vs Superficial Engagement', 'Introducing AI Tools to Educators Who Are Hesitant to Adopt Technology', 'Designing Accessible Learning Content for Diverse Student Abilities'],
+  },
+
+  // 13. DEVOPS & INFRASTRUCTURE
+  {
+    id: 'devops-engineer',
+    title: 'DevOps Engineer',
+    domain: 'DevOps & SRE',
+    description: 'Bridge software engineering and operational reliability through automated CI/CD pipelines, container orchestration, and infrastructure monitoring.',
+    coreSkills: ['Docker & Containerization', 'Kubernetes Orchestration', 'CI/CD Pipelines (GitHub Actions/Jenkins)', 'Infrastructure as Code (Terraform)'],
+    supportingSkills: ['Linux System Administration', 'Cloud Monitoring (Prometheus/Grafana)', 'Bash / Python Scripting', 'Cloud Security (IAM/VPC)'],
+    tools: ['Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'Linux CLI', 'Prometheus', 'Grafana'],
+    beginnerSkills: ['Linux File Permissions & Shell', 'Writing Dockerfiles', 'Basic Git Workflows', 'Simple Bash Scripts'],
+    intermediateSkills: ['Multi-Stage Docker Builds', 'Kubernetes Deployments & Services', 'Automated Testing Pipelines', 'Terraform Modules'],
+    advancedSkills: ['Zero-Downtime Blue-Green Deployments', 'Helm Chart Packaging', 'Observability & Incident Alerting', 'Service Meshes (Istio)'],
+    interviewTopics: ['Difference Between Containers and Virtual Machines', 'How Kubernetes Manages Pod Scheduling & Self-Healing', 'Designing a Secure CI/CD Pipeline', 'Troubleshooting a Crashed Service in a Production Cluster'],
+    preferredSkills: ['Helm', 'Ansible', 'AWS EKS', 'ArgoCD'],
+    recommendedCertifications: ['Certified Kubernetes Administrator (CKA)', 'AWS Certified DevOps Engineer', 'HashiCorp Certified Terraform Associate'],
+    recommendedProjectTypes: ['Automated Multi-Stage CI/CD Deployment Pipeline', 'High-Availability Kubernetes Cluster with Prometheus Monitoring'],
+    practicalExperienceNeeded: 'Hands-on experience deploying containerized services and configuring automated deployment triggers.',
+    learningPrerequisites: ['Linux Fundamentals', 'Basic Networking', 'Git'],
+  },
+
+  // 14. DATABASE ADMINISTRATION
+  {
+    id: 'database-administrator',
+    title: 'Database Administrator',
+    domain: 'Database Administration',
+    description: 'Ensure enterprise data reliability, high availability, backup integrity, query optimization, and schema performance across relational and distributed databases.',
+    coreSkills: ['SQL & Query Optimization', 'Database Architecture (PostgreSQL/MySQL/Oracle)', 'Backup & Disaster Recovery', 'Database Indexing & Performance Tuning'],
+    supportingSkills: ['Database Replication & High Availability', 'Data Security & Role-Based Access', 'Data Migration & ETL', 'Linux Server Maintenance'],
+    tools: ['PostgreSQL', 'MySQL', 'pgAdmin / DBeaver', 'Linux CLI', 'Prometheus pg_stat_statements'],
+    beginnerSkills: ['SQL DDL and DML', 'Table Normalization (1NF to 3NF)', 'User Roles & Permissions', 'Simple Backup Dumps'],
+    intermediateSkills: ['EXPLAIN ANALYZE Query Profiling', 'B-Tree vs GIN Index Selection', 'Read Replica Streaming Replication', 'Automated Scheduled Backups'],
+    advancedSkills: ['Database Sharding & Connection Pooling', 'Point-In-Time Recovery (PITR)', 'Deadlock Diagnosis & Table Locking', 'Cross-Region Failover'],
+    interviewTopics: ['Difference Between Clustered and Non-Clustered Indexes', 'How ACID Transactions are Enforced via WAL (Write-Ahead Logging)', 'Diagnosing and Fixing a Slow Query with EXPLAIN ANALYZE', 'Step-by-Step Point-In-Time Database Disaster Recovery'],
+    preferredSkills: ['Redis', 'MongoDB', 'Flyway / Liquibase', 'TimescaleDB'],
+    recommendedCertifications: ['PostgreSQL Certified Professional', 'Oracle Certified Professional (OCP)', 'AWS Certified Database Specialty'],
+    recommendedProjectTypes: ['Enterprise Relational Schema Design with Read Replication', 'Automated Database Backup, Health Monitoring and PITR Pipeline'],
+    practicalExperienceNeeded: 'Hands-on schema normalization, index profiling, and disaster recovery drills.',
+    learningPrerequisites: ['SQL Basics', 'Relational Algebra', 'Basic OS Concepts'],
+  },
+
+  // 15. GAME DEVELOPMENT
+  {
+    id: 'game-developer',
+    title: 'Game Developer',
+    domain: 'Game Development',
+    description: 'Engineer interactive 2D/3D gameplay mechanics, real-time physics simulations, graphics rendering shaders, and cross-platform game systems.',
+    coreSkills: ['C# / C++ Programming', 'Game Engine Architecture (Unity / Unreal)', '3D Vector Mathematics & Physics', 'Game Loop & State Machines'],
+    supportingSkills: ['Shader Programming (HLSL/GLSL)', 'UI & Audio Integration', 'Memory & Frame Rate Optimization', 'Multiplayer Networking Basics'],
+    tools: ['Unity Engine', 'Unreal Engine 5', 'Visual Studio', 'Git LFS', 'Blender Basics'],
+    beginnerSkills: ['Vector Math (Distance, Direction)', 'GameObject / Actor Lifecycles', 'Collision Detection', 'Input System'],
+    intermediateSkills: ['State Machines for Character AI', 'Object Pooling Systems', 'Prefab Hierarchies & Animation Controllers', 'Particle Systems'],
+    advancedSkills: ['Custom Render Pipelines & Shaders', 'Pathfinding Algorithms (A*)', 'Client-Server Network Prediction', 'Garbage Collection Profiling'],
+    interviewTopics: ['How the Game Loop Works (Update vs FixedUpdate)', 'Vector Dot Product and Cross Product in Game Calculations', 'Implementing Object Pooling to Eliminate Frame Drops', 'Handling Lag Compensation in Multiplayer Games'],
+    preferredSkills: ['DOTS / ECS Architecture', 'DirectX / OpenGL', 'Steamworks API'],
+    recommendedCertifications: ['Unity Certified Associate / Professional Programmer', 'Unreal Engine Authorized Certificate'],
+    recommendedProjectTypes: ['2D Physics Action Platformer', '3D Roguelike Arena with Custom Enemy AI and Object Pooling'],
+    practicalExperienceNeeded: 'Playable prototypes on itch.io or GitHub demonstrating gameplay loops and smooth 60 FPS performance.',
+    learningPrerequisites: ['Object-Oriented Programming', 'High School Trigonometry & Vector Math'],
+  },
+
+  // 16. IOT & EMBEDDED SYSTEMS
+  {
+    id: 'iot-engineer',
+    title: 'IoT Solutions Engineer',
+    domain: 'IoT & Embedded Systems',
+    description: 'Design connected physical devices, sensor telemetry pipelines, edge computing nodes, and MQTT broker integrations for smart systems.',
+    coreSkills: ['Microcontroller Programming (ESP32/Raspberry Pi)', 'IoT Protocols (MQTT, HTTP, CoAP)', 'Embedded C / MicroPython', 'Sensor & Actuator Telemetry'],
+    supportingSkills: ['Edge Data Filtering', 'Cloud IoT Hubs (AWS IoT Core)', 'Low-Power Wireless (BLE, LoRaWAN)', 'Hardware Security & TLS'],
+    tools: ['ESP-IDF / Arduino IDE', 'Raspberry Pi OS', 'Mosquitto MQTT', 'PlatformIO', 'Node-RED'],
+    beginnerSkills: ['Reading Digital & Analog Sensors', 'Serial Monitor Debugging', 'Wi-Fi Reconnection Logic', 'Basic JSON Payloads'],
+    intermediateSkills: ['MQTT Publish/Subscribe Topics & QoS', 'Deep Sleep & Power Budgeting', 'Over-The-Air (OTA) Firmware Updates', 'Local Edge Rule Processing'],
+    advancedSkills: ['Mesh Networking Protocols', 'Hardware Cryptographic Coprocessors', 'High-Density Fleet Monitoring', 'Edge AI Inference on Microcontrollers'],
+    interviewTopics: ['Explain the MQTT Protocol and Differences Between QoS 0, 1, and 2', 'Techniques to Run an IoT Sensor Node on a Small Battery for 1 Year', 'Securing IoT Devices Against Firmware Tampering', 'Difference Between I2C, SPI, and UART Buses'],
+    preferredSkills: ['LoRaWAN', 'FreeRTOS', 'AWS IoT Core', 'InfluxDB'],
+    recommendedCertifications: ['AWS Certified IoT Specialty', 'Cisco Certified IoT Fundamentals'],
+    recommendedProjectTypes: ['Smart Environmental Air Quality Monitor with MQTT and Live Dashboard', 'LoRaWAN Long-Range Crop Telemetry System with Low-Power Sleep'],
+    practicalExperienceNeeded: 'Hands-on breadboard prototyping, sensor calibration, and packet capture.',
+    learningPrerequisites: ['Basic Electronics (Voltage, Current, Resistors)', 'C or Python Basics'],
+  },
+
+  // 17. ROBOTICS
+  {
+    id: 'robotics-engineer',
+    title: 'Robotics Engineer',
+    domain: 'Robotics',
+    description: 'Develop autonomous robot motion control systems, forward and inverse kinematics solvers, SLAM algorithms, and sensor fusion for mobile robots.',
+    coreSkills: ['Robot Operating System (ROS 2)', 'C++ & Python for Robotics', 'Kinematics & Motion Planning', 'Sensory Perception (LiDAR, Encoders, IMU)'],
+    supportingSkills: ['Simulations in Gazebo / Isaac Sim', 'SLAM (Simultaneous Localization and Mapping)', 'PID Motor Controllers', 'State Estimation (Kalman Filtering)'],
+    tools: ['ROS 2 Humble/Iron', 'Gazebo Simulator', 'RViz', 'Linux Ubuntu', 'Git'],
+    beginnerSkills: ['Linux CLI Navigation', 'Basic C++ Classes', 'Understanding Coordinate Transforms', 'Differential Drive Basics'],
+    intermediateSkills: ['Writing ROS 2 Nodes, Topics & Services', 'Gazebo Robot Model Simulation (URDF/Xacro)', 'LiDAR Point Cloud Processing', 'Path Navigation with Nav2'],
+    advancedSkills: ['Extended Kalman Filter (EKF) Sensor Fusion', 'Inverse Kinematics for Robotic Manipulators', 'Reinforcement Learning for Locomotion', 'Real-Time Hardware Trajectory Tracking'],
+    interviewTopics: ['How Forward Kinematics Differs from Inverse Kinematics', 'How ROS 2 Nodes Communicate over DDS Middleware', 'Explaining the Core Principles of SLAM for Navigation', 'Tuning a PID Controller for Precise Actuator Positioning'],
+    preferredSkills: ['MoveIt 2', 'OpenCV Vision Fusion', 'CAN Bus Control'],
+    recommendedCertifications: ['ROS 2 Developer Certification (ConstructSim)', 'NVIDIA Isaac Robotics Specialization'],
+    recommendedProjectTypes: ['Autonomous Mobile Robot Simulation with Nav2 and LiDAR SLAM', '2-DoF Robotic Arm Kinematics Controller with Target Tracking'],
+    practicalExperienceNeeded: 'Simulation projects in Gazebo or physical microcontroller/motor actuator control.',
+    learningPrerequisites: ['Linear Algebra (Matrices, Coordinate Frames)', 'C++ Fundamentals'],
+  },
+
+  // 18. DIGITAL MARKETING & GROWTH
+  {
+    id: 'digital-marketing-analyst',
+    title: 'Digital Marketing Analyst',
+    domain: 'Digital Marketing',
+    description: 'Measure multi-channel digital acquisition performance, optimize customer conversion funnels, execute programmatic SEO, and run structured A/B tests.',
+    coreSkills: ['Web Analytics (Google Analytics 4)', 'Search Engine Optimization (SEO & Technical SEO)', 'Conversion Rate Optimization (CRO & A/B Testing)', 'SQL for Marketing Analytics'],
+    supportingSkills: ['Search Engine Marketing (Google Ads)', 'Customer Funnel Analysis', 'Data Visualization (Looker Studio / Tableau)', 'Attribution Modeling'],
+    tools: ['Google Analytics 4', 'Looker Studio', 'Google Tag Manager', 'SEMrush / Ahrefs', 'SQL', 'Excel'],
+    beginnerSkills: ['UTM Parameter Tracking', 'Keyword Research Basics', 'On-Page SEO Checks', 'Looker Studio Dashboards'],
+    intermediateSkills: ['GTM Event Trigger Setup', 'Multi-Touch Attribution Models', 'Calculating CAC, LTV, and ROAS', 'A/B Test Statistical Significance'],
+    advancedSkills: ['Server-Side Google Tag Manager', 'Marketing Mix Modeling (MMM)', 'Automated Programmatic SEO Scripts', 'Predictive Churn Scoring'],
+    interviewTopics: ['Difference Between First-Click, Last-Click, and Data-Driven Attribution', 'How to Calculate Customer Lifetime Value (LTV) and CAC Ratio', 'Setting Up Custom Event Conversions in GA4 and GTM', 'Diagnosing an Unexpected 25% Drop in Organic Search Traffic'],
+    preferredSkills: ['Python Scripting for Ad APIs', 'Meta Ads Manager', 'Mixpanel'],
+    recommendedCertifications: ['Google Analytics 4 Certification', 'Google Ads Search Certification', 'HubSpot Inbound Marketing'],
+    recommendedProjectTypes: ['Full-Funnel E-Commerce Analytics Dashboard in Looker Studio', 'A/B Testing Conversion Optimization Experiment with Statistical Proof'],
+    practicalExperienceNeeded: 'Experience tracking web events, calculating ROI metrics, and writing quantitative marketing audits.',
+    learningPrerequisites: ['Basic Statistics', 'Spreadsheet Literacy'],
   },
 ];

@@ -4,12 +4,17 @@
  * assessments, interview simulators, and gap analytics.
  */
 
-export type ProficiencyLevel = 'Beginner' | 'Intermediate' | 'Advanced';
+export type ProficiencyLevel = 'Not Started' | 'Beginner' | 'Intermediate' | 'Advanced';
 export type SkillMatchStatus = 'Strong Match' | 'Partial Match' | 'Missing';
 export type RoadmapStatus = 'Not Started' | 'In Progress' | 'Completed';
 export type QuestionType = 'concept' | 'multiple_choice' | 'short_answer' | 'coding' | 'scenario';
 export type InterviewType = 'Technical' | 'HR' | 'Mixed';
 export type InterviewDifficulty = 'Entry Level' | 'Associate' | 'Senior Ready';
+
+export type CareerAlignmentStatus =
+  | 'Good skill alignment'
+  | 'Possible with additional preparation'
+  | 'Significant skill gaps';
 
 export interface Student {
   id: string;
@@ -39,7 +44,7 @@ export interface UserAccount {
 export interface Skill {
   id: string;
   name: string;
-  category: 'Language' | 'Framework' | 'Database' | 'Data Tool' | 'Cloud & DevOps' | 'Core CS' | 'Soft Skills' | 'Machine Learning';
+  category: 'Language' | 'Framework' | 'Database' | 'Data Tool' | 'Cloud & DevOps' | 'Core CS' | 'Soft Skills' | 'Machine Learning' | 'Hardware & IoT' | 'Domain Skill';
   level: ProficiencyLevel;
   description: string;
   prerequisites: string[];
@@ -55,6 +60,7 @@ export interface CareerSkill {
   required_level: ProficiencyLevel;
   category_group: 'core_tech' | 'supporting_tech' | 'tools' | 'soft_skills';
   why_relevant: string;
+  prerequisites?: string[];
   suggested_practice: string;
   suggested_project: string;
 }
@@ -62,13 +68,20 @@ export interface CareerSkill {
 export interface Career {
   id: string;
   name: string;
+  domain: string;
   tagline: string;
   description: string;
   typical_roles: string[];
   responsibilities: string[];
   skills: CareerSkill[];
+  preferred_skills?: string[];
+  important_tools?: string[];
+  recommended_certifications?: string[];
+  recommended_project_types?: string[];
+  practical_experience_needed?: string;
   typical_project_skills: string[];
   interview_topics: string[];
+  learning_prerequisites?: string[];
 }
 
 export interface StudentSkill {
@@ -77,6 +90,8 @@ export interface StudentSkill {
   skill_name: string;
   category: string;
   proficiency: ProficiencyLevel;
+  experience_years_or_months?: string; // e.g. "6 months", "1 year"
+  evidence_or_source?: string; // e.g. "Coursework", "Self-taught", "Internship", "GitHub"
   source: 'onboarding' | 'resume' | 'manual' | 'practice_verified';
   verified_score?: number;
   added_at: string;
@@ -127,11 +142,41 @@ export interface SkillGapAnalysisResult {
   missing_skills: SkillGapDetail[];
   all_evaluated_skills: SkillGapDetail[];
   next_three_steps: NextStepItem[];
+
+  // User Section 4 Structured Separation:
+  skills_already_have: SkillGapDetail[];
+  skills_need_improvement: SkillGapDetail[];
+  skills_missing: SkillGapDetail[];
+  recommended_additional_skills: string[];
+  practical_experience_needed: string;
+  projects_recommended: ProjectRecommendation[];
+  interview_preparation_needed: string[];
+
+  // Alignment evaluation
+  career_alignment_status: CareerAlignmentStatus;
+  status_color: 'green' | 'yellow' | 'red';
+  status_explanation: string;
+
   methodology: {
     formula: string;
     weights_explanation: string;
     partial_credit_rule: string;
   };
+}
+
+export interface CareerOptionMatch {
+  career: Career;
+  matching_skills: SkillGapDetail[];
+  skills_needing_improvement: SkillGapDetail[];
+  missing_skills: SkillGapDetail[];
+  recommended_additional_skills: string[];
+  overall_match_percentage: number;
+  alignment_status: CareerAlignmentStatus;
+  status_color: 'green' | 'yellow' | 'red';
+  status_explanation: string;
+  strong_count: number;
+  partial_count: number;
+  missing_count: number;
 }
 
 export interface RoadmapItem {
@@ -144,6 +189,7 @@ export interface RoadmapItem {
   level: ProficiencyLevel;
   prerequisites: string[];
   estimated_hours: number;
+  why_needed: string;
   practice_task: string;
   mini_project: string;
   status: RoadmapStatus;
@@ -191,6 +237,17 @@ export interface PracticeSubmissionRecord {
   user_answer: string;
   evaluation: PracticeEvaluation;
   submitted_at: string;
+}
+
+export interface PracticeActivityItem {
+  id: string;
+  skill_id: string;
+  skill_name: string;
+  topic: string;
+  level: ProficiencyLevel;
+  activity_description: string;
+  is_completed: boolean;
+  category: string;
 }
 
 export interface InterviewQuestionItem {
@@ -243,6 +300,9 @@ export interface ProjectRecommendation {
   target_career: string;
   difficulty: ProficiencyLevel;
   key_features: string[];
+  skills_gained?: string[];
+  why_recommended?: string;
+  expected_outcome?: string;
   suggested_technologies: string[];
   expected_learning_outcome: string;
   estimated_days: number;

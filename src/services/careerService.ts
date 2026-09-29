@@ -76,6 +76,7 @@ export function convertFrameworkToCareer(framework: CareerFramework): Career {
   return {
     id: framework.id,
     name: framework.title,
+    domain: framework.domain,
     tagline: framework.description,
     description: framework.description,
     typical_roles: [

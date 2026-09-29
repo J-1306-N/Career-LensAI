@@ -1,8 +1,10 @@
-import { Career, StudentSkill, SkillGapAnalysisResult, SkillGapDetail, NextStepItem, ProficiencyLevel } from '../types';
+import { Career, StudentSkill, SkillGapAnalysisResult, SkillGapDetail, NextStepItem, ProficiencyLevel, CareerAlignmentStatus, ProjectRecommendation } from '../types';
 import { CAREERS_DATA } from '../data/careersData';
 import { SKILLS_LIBRARY } from '../data/skillsLibrary';
+import { INITIAL_PROJECT_RECOMMENDATIONS } from '../data/demoData';
 
 const PROFICIENCY_SCORES: Record<ProficiencyLevel, number> = {
+  'Not Started': 0,
   Beginner: 1,
   Intermediate: 2,
   Advanced: 3,
@@ -119,6 +121,62 @@ export function analyzeSkillGaps(
   // Generate dynamic "Next 3 Steps" based on priority gaps
   const nextThreeSteps = generateNextThreeSteps(missingSkills, partialMatches, career);
 
+  // Calculate alignment status (User Request Section 3 & 4)
+  let careerAlignmentStatus: CareerAlignmentStatus;
+  let statusColor: 'green' | 'yellow' | 'red';
+  let statusExplanation: string;
+
+  if (overallPercentage >= 70) {
+    careerAlignmentStatus = 'Good skill alignment';
+    statusColor = 'green';
+    statusExplanation = `Your current skill profile shows strong alignment with ${career.name}. Complete recommended projects and interview drills to reach peak competitive readiness.`;
+  } else if (overallPercentage >= 40) {
+    careerAlignmentStatus = 'Possible with additional preparation';
+    statusColor = 'yellow';
+    statusExplanation = `You have foundational skills relevant to ${career.name}, but key tool proficiencies and intermediate concepts need structured preparation.`;
+  } else {
+    careerAlignmentStatus = 'Significant skill gaps';
+    statusColor = 'red';
+    statusExplanation = `Multiple core competencies required for ${career.name} have not yet been acquired. Work systematically starting from Phase 1 fundamentals.`;
+  }
+
+  // Recommended projects matching this career or generic fallback
+  const matchingProjects = INITIAL_PROJECT_RECOMMENDATIONS.filter(
+    (p) => p.target_career.toLowerCase() === career.name.toLowerCase()
+  );
+  const projectsRecommended: ProjectRecommendation[] = matchingProjects.length > 0
+    ? matchingProjects
+    : [
+        {
+          id: `proj-${career.id}-1`,
+          title: `${career.name} Core Implementation Capstone`,
+          problem_statement: `Build an industry-aligned project integrating ${career.skills.slice(0, 3).map((s) => s.skill_name).join(', ')}.`,
+          skills_practiced: career.skills.slice(0, 4).map((s) => s.skill_name),
+          target_career: career.name,
+          difficulty: 'Intermediate',
+          key_features: [
+            'Architect scalable modular structure',
+            'Integrate database and API connectivity',
+            'Handle edge cases and comprehensive error logging',
+            'Document architecture and deployment steps in README',
+          ],
+          suggested_technologies: career.typical_project_skills.slice(0, 4),
+          expected_learning_outcome: `Tangible portfolio evidence of ${career.name} technical competency.`,
+          estimated_days: 7,
+          portfolio_impact: 'High',
+        },
+      ];
+
+  // Recommended additional skills from preferred or tools
+  const recommendedAdditional = career.preferred_skills && career.preferred_skills.length > 0
+    ? career.preferred_skills
+    : career.important_tools && career.important_tools.length > 0
+      ? career.important_tools
+      : ['Git & GitHub', 'Agile/Scrum', 'CI/CD Pipelines'];
+
+  const practicalExperienceNeeded = career.practical_experience_needed ||
+    'Hands-on practice solving real problem sets, completing capstone projects, and reviewing code in repositories.';
+
   return {
     career_id: career.id,
     career_name: career.name,
@@ -135,6 +193,21 @@ export function analyzeSkillGaps(
     missing_skills: missingSkills,
     all_evaluated_skills: allEvaluatedSkills,
     next_three_steps: nextThreeSteps,
+
+    // User Section 4 Structured Separation:
+    skills_already_have: strongMatches,
+    skills_need_improvement: partialMatches,
+    skills_missing: missingSkills,
+    recommended_additional_skills: recommendedAdditional,
+    practical_experience_needed: practicalExperienceNeeded,
+    projects_recommended: projectsRecommended,
+    interview_preparation_needed: career.interview_topics || [],
+
+    // Alignment evaluation
+    career_alignment_status: careerAlignmentStatus,
+    status_color: statusColor,
+    status_explanation: statusExplanation,
+
     methodology: {
       formula: 'Skill Match % = (Sum of Earned Weighted Points / Total Required Weighted Points) × 100',
       weights_explanation: 'Skills are categorized by industry framework necessity: Core Technical = Weight 3 (30 pts max), Supporting Technical & Tools = Weight 2 (20 pts max), Soft Skills = Weight 1 or 2 (10-20 pts max).',

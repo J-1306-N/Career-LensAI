@@ -4,6 +4,7 @@ const INITIAL_CORE_CAREERS: Career[] = [
   {
     id: 'data-analyst',
     name: 'Data Analyst',
+    domain: 'Data Analytics',
     tagline: 'Transform raw institutional and business datasets into actionable decisions through SQL, visual storytelling, and statistical modeling.',
     description: 'Data Analysts bridge business strategy and technical numbers. They clean messy records, build automated dashboards, execute exploratory data analyses, and communicate findings to key stakeholders.',
     typical_roles: ['Junior Data Analyst', 'Business Intelligence Analyst', 'Analytics Consultant', 'Product Operations Analyst'],
@@ -152,6 +153,7 @@ const INITIAL_CORE_CAREERS: Career[] = [
   {
     id: 'python-developer',
     name: 'Python Developer',
+    domain: 'Software Development',
     tagline: 'Engineer high-throughput server backends, microservice APIs, automation scripts, and scalable database layers using Python.',
     description: 'Python Developers build robust applications using frameworks like FastAPI and Django, design RESTful endpoints, connect relational databases, and write modular, test-driven backend code.',
     typical_roles: ['Backend Python Engineer', 'Django/FastAPI Developer', 'API Integration Engineer', 'Automation Software Engineer'],
@@ -296,6 +298,7 @@ const INITIAL_CORE_CAREERS: Career[] = [
   {
     id: 'software-developer',
     name: 'Software Developer',
+    domain: 'Software Development',
     tagline: 'Design and build resilient, testable, and scalable software systems using algorithms, design patterns, and modern engineering practices.',
     description: 'Software Developers create full-cycle software solutions. They write clean code in compiled or interpreted languages, design architecture, maintain CI/CD pipelines, and collaborate in agile engineering sprints.',
     typical_roles: ['Software Engineer', 'Full-Stack Developer', 'Junior Systems Engineer', 'Application Developer'],
@@ -440,6 +443,7 @@ const INITIAL_CORE_CAREERS: Career[] = [
   {
     id: 'data-scientist',
     name: 'Data Scientist',
+    domain: 'Data Science',
     tagline: 'Formulate data-driven hypotheses, build predictive statistical models, uncover hidden trends, and drive strategic innovations.',
     description: 'Data Scientists combine rigorous statistical thinking, advanced machine learning, and programming to solve complex predictive problems. They design experiments, build predictive models, and guide product roadmap strategies.',
     typical_roles: ['Associate Data Scientist', 'Predictive Analytics Specialist', 'Decision Scientist', 'Quantitative Analyst'],
@@ -584,6 +588,7 @@ const INITIAL_CORE_CAREERS: Career[] = [
   {
     id: 'ml-engineer',
     name: 'Machine Learning Engineer',
+    domain: 'Machine Learning',
     tagline: 'Bridge cutting-edge AI research and production infrastructure by building robust training pipelines and low-latency inference systems.',
     description: 'Machine Learning Engineers take prototype models and operationalize them. They build continuous retraining pipelines, containerize inference servers, optimize latency, and monitor for model data drift in production.',
     typical_roles: ['Associate ML Engineer', 'MLOps Engineer', 'AI Systems Developer', 'Applied Machine Learning Engineer'],
@@ -716,6 +721,7 @@ const INITIAL_CORE_CAREERS: Career[] = [
   {
     id: 'web-developer',
     name: 'Web Developer',
+    domain: 'Web Development',
     tagline: 'Craft dynamic, accessible, high-performance web applications with modern frontend frameworks and full-stack API backends.',
     description: 'Web Developers build interactive digital experiences. They implement responsive user interfaces, manage client-side state, integrate RESTful APIs, and optimize web vitals for performance and search ranking.',
     typical_roles: ['Frontend Developer', 'Full-Stack Web Developer', 'React Developer', 'UI Engineer'],
